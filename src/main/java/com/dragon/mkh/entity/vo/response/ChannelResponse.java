@@ -21,7 +21,7 @@ public class ChannelResponse  implements Serializable {
     private String name;
     @ApiModelProperty(value = "渠道外链")
     private String url;
-    @ApiModelProperty(value = "价格")
+    @ApiModelProperty(value = "渠道下的价格")
     private Double price;
 
     public String getID() {
