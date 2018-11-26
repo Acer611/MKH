@@ -26,7 +26,7 @@ public class ChannelServiceImpl implements IChannelService {
 
         List<ChannelResponse> channelResponseList = new ArrayList<>();
 
-        String cql = "insert into Channel(name, source,url,code,price,totalCount,payCount,isDel) values " ;
+        String cql = "insert into Channel(name, source,url,code,price,totalCount,payCount,isDel,creator) values " ;
 
         StringBuilder valuesStr = new StringBuilder();
         ChannelResponse  channelResponse = null;
@@ -46,7 +46,8 @@ public class ChannelServiceImpl implements IChannelService {
                 Integer payCount =0;
                 valuesStr = valuesStr.append("('").append(name).append("',").append("'").append(source).append("',");
                 valuesStr.append("'").append(url).append("','").append(code).append("',").append(price).append(",");
-                valuesStr.append(totalCount).append(",").append(payCount).append(",").append(0).append(")");
+                valuesStr.append(totalCount).append(",").append(payCount).append(",").append(0)
+                        .append(",pointer('_User','56cd6f947db2a2622918608c')").append(")");
                 if(i!=endChannelID){
                     valuesStr.append(",") ;
                 }
@@ -66,9 +67,6 @@ public class ChannelServiceImpl implements IChannelService {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-        //循环组装渠道信息主要是外链外链
 
         return channelResponseList;
     }
